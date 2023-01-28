@@ -13,27 +13,30 @@ function Book(title, author, pages, read) {
 function addBookToLibrary() {
   
 }
+
+let newBookModal = document.getElementById('addBookModal')
+
 // Page Elements
 const form = document.getElementById('addBookForm')
 
-form.style.visibility="hidden"
+// form.style.visibility="hidden"
 const submitBook = document.getElementById("submit")
 const libraryTable = document.getElementById("libraryTable")
 const addBookButton = document.getElementById("add_book")
 
 
-// Add a book
-addBookButton.addEventListener('click', () => {
+// // Add a book
+// addBookButton.addEventListener('click', () => {
 
-    event.preventDefault()
+//     event.preventDefault()
 
-    if (form.style.visibility==='hidden') {
-        form.style.visibility = 'visible'
-    } else {
-        form.style.visibility = 'hidden'
-    }
+//     if (form.style.visibility==='hidden') {
+//         form.style.visibility = 'visible'
+//     } else {
+//         form.style.visibility = 'hidden'
+//     }
 
-})
+// })
 
 // Close add book modal
 
@@ -45,12 +48,14 @@ function addToArray(){
     let pages = document.getElementById("pages").value
     // let read = readValue()
     let read = document.getElementById("read").checked
-    alert(title + " " + author + " " + pages + " " + read)
 
     let newBook = new Book(title,author,pages,read)
     myLibrary.push(newBook)
     console.log(myLibrary)
+    newBookModal.ariaHidden=true
+
     resetForm();
+
     loopBooks();
     // addToTable(newBook)
 }
@@ -113,7 +118,6 @@ function loopBooks(){
 function resetForm(){
 
     form.reset()
-    form.style.visibility="hidden"
 
 }
 

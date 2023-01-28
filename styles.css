@@ -1,14 +1,23 @@
-#addBookForm{
+/* #addBookForm{
     display: flex;
     flex-direction: column;
     max-width: 400px;
     border: 1px solid blue;
     padding: 10px;
-    /* visibility: hidden; */
+    visibility: hidden; */
+/* } */
+
+
+#libraryImage{
+    max-height: 100px;
+    max-width: 1000px;
+    position: relative
 }
+
 
 .library{
     display: flex;
+    flex-direction: column;
     min-height: 100vh;
     min-width: 100%;
 
@@ -30,12 +39,12 @@ td{
 } */
 
 
-.leftside{
+/* .leftside{
     border-right-style: solid;
     border-color: black;
     width: 300px;
     padding-right: 25px;
-}
+} */
 
 .libraryContents{
     padding-left: 20px;
