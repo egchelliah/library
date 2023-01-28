@@ -2,5 +2,41 @@
     display: flex;
     flex-direction: column;
     max-width: 400px;
+    border: 1px solid blue;
+    padding: 10px;
     /* visibility: hidden; */
+}
+
+.library{
+    display: flex;
+    min-height: 100vh;
+    min-width: 100%;
+
+}
+
+table, th, td{
+    border:.5px solid black;
+}
+
+table{
+    width: 500px;
+}
+th{
+    height: 40px;
+}
+
+td{
+    width: 40px;
+}
+
+
+.leftside{
+    border-right-style: solid;
+    border-color: black;
+    width: 300px;
+    padding-right: 25px;
+}
+
+.libraryContents{
+    padding-left: 20px;
 }
