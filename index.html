@@ -8,79 +8,55 @@
     <link rel="stylesheet" href="styles.css">
     <script src="./app.js" defer> </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous" defer></script>
+    <script src="https://kit.fontawesome.com/8c1c71e42e.js" crossorigin="anonymous"></script>
     <title>Library</title>
 </head>
 <body>
     
     <div class="container-fluid">
         <div class="top">
-            <!-- <div class="add button">
-                <button id="add_book">Add Book</button>
-            </div> -->
-            <!-- Add Button -->
             <img src="./library.png" class="img-thumbnail" id="libraryImage" alt="...">
 
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBookModal">
+            <button type="button" class="btn btn-primary" id="add_book">
             Add a book
             </button>
-            <div class="modal fade" id="addBookModal" tabindex="-1" aria-labelledby="addBookModal" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title">Add form</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
+            <div class="pop1" id="pop1">
+
                     <form id="addBookForm" class=".form-control">
 
-                        <div class="modal-body">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add a new book</h5>
+                            <button type="button" class="btn-close" id="closex" aria-label="Close"></button>
+                          </div>
 
-                                <input type="text" id="title" placeholder="Title" required />
-                                <input type="text" id="author" placeholder="Author" required/>
-                                <input type="number" id="pages" placeholder="Number of pages" required/>
+
+                                <input type="text" id="title" class=".form-control " placeholder="Title" required />
+                                <input type="text" id="author" class=".form-control" placeholder="Author" required/>
+                                <input type="number" id="pages" class=".form-control" placeholder="Number of pages" required/>
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" role="switch" type="checkbox" name="read" id="read">
-                                    <label class="form-check-label" for="read">Have you read the book?</label>
-            
-                                </div>        
-                        </div>
+                                    <label class="form-check-label for="read">Have you read the book?</label>
+                                </div>  
+                                <button type="submit" id="submit" value="submit" class="btn btn-primary">Add Book</button>
+                            </form>            
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" id="submit" value="submit" data-bs-dismiss="modal" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </form>            
-
-                </div>
             </div>
         </div>
-              
-            <!-- <div class="form-group">
-                <form id="addBookForm" class=".form-control">
-                    <button type="button" class="btn-close" aria-label="Close"></button>
-                    <input type="text" id="title" placeholder="Title" />
-                    <input type="text" id="author" placeholder="Author"/>
-                    <label for="pages">How many pages does it have?</label>
-                    <input type="number" id="pages" placeholder="Number of pages" />
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" role="switch" type="checkbox" name="read" id="read">
-                        <label class="form-check-label" for="read">Have you read the book?</label>
-
-                    </div>
-                    <!-- <button id="submit" class="btn btn-default" value="Submit">Submit</button>     -->
-                </form>
-            <!-- </div> --> 
-        </div>
-
         <div class="table-responsive">
-            <table class="table table-hover" id="libraryTable">
-                <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Pages</th>
-                    <th>Read</th>
-                    <th>Remove Book</th>
-                    
-                </tr>
+            <table class="table" id="libraryTable">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Pages</th>
+                        <th scope="col">Read</th>
+                        <th scope="col">Remove Book</th>
+                        
+                    </tr>
+                </thead>
+                <tbody id="table_body">
+
+                </tbody>
             </table>
         </div>
 

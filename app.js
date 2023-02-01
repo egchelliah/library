@@ -1,3 +1,22 @@
+let pop1 = document.getElementById('pop1')
+let closeAddBook = document.getElementById('closex')
+
+closeAddBook.addEventListener('click', () => {
+    pop1.style.display='none'
+    resetForm()
+})
+
+// Add a book
+const addBookButton = document.getElementById("add_book")
+
+addBookButton.addEventListener('click', () => {
+
+    event.preventDefault()
+    pop1.style.display='block'
+
+})
+
+
 // Array of books
 let myLibrary = [];
 
@@ -18,27 +37,22 @@ let newBookModal = document.getElementById('addBookModal')
 
 // Page Elements
 const form = document.getElementById('addBookForm')
-
-// form.style.visibility="hidden"
 const submitBook = document.getElementById("submit")
 const libraryTable = document.getElementById("libraryTable")
-const addBookButton = document.getElementById("add_book")
+const tableBody = document.getElementById("table_body")
+const removeItem = document.getElementById("removeBook")
 
+function clearTable(){
+    tableBody.innerHTML = ""
+}
 
-// // Add a book
-// addBookButton.addEventListener('click', () => {
+// removeItem.addEventListener('click', ()=>{
+//     let index = removeItem.dataset.bookName
+//     console.log('The book to be removed is ' + index)
 
-//     event.preventDefault()
-
-//     if (form.style.visibility==='hidden') {
-//         form.style.visibility = 'visible'
-//     } else {
-//         form.style.visibility = 'hidden'
-//     }
+//     // myLibrary = myLibrary.filter(item => item.title !== 'index')
 
 // })
-
-// Close add book modal
 
 
 function addToArray(){
@@ -46,45 +60,27 @@ function addToArray(){
     let title = document.getElementById("title").value
     let author = document.getElementById("author").value
     let pages = document.getElementById("pages").value
-    // let read = readValue()
     let read = document.getElementById("read").checked
 
     let newBook = new Book(title,author,pages,read)
     myLibrary.push(newBook)
     console.log(myLibrary)
-    newBookModal.ariaHidden=true
 
     resetForm();
+    pop1.style.display='none'
+
 
     loopBooks();
     // addToTable(newBook)
 }
 
-// function addToTable(newBook) {
-//      // Create new table row
-//      let newRow = document.createElement("tr")
-//      libraryTable.append(newRow)
- 
-//      // Create and add title
-//      let titleCell = document.createElement("td")
-//      titleCell.innerHTML=newBook.title
-//      newRow.append(titleCell)
- 
-//      // Create and add author
-//      let authorCell = document.createElement("td")
-//      authorCell.innerHTML=newBook.author
-//      newRow.append(authorCell)
- 
-//      // Create and add author
-//      let pagesCell = document.createElement("td")
-//      pagesCell.innerHTML=newBook.pages
-//      newRow.append(pagesCell)
-// }
-
 function loopBooks(){
-    for (i=(myLibrary.length-1); i<myLibrary.length; i++){
+    
+    clearTable()
+
+    for (i=0; i<myLibrary.length; i++){
         let newRow = document.createElement("tr")
-        libraryTable.append(newRow)
+        tableBody.append(newRow)
     
         // Create and add title
         let titleCell = document.createElement("td")
@@ -103,15 +99,41 @@ function loopBooks(){
 
         // Create and add read status
         let readCell = document.createElement("td")
+        newRow.append(readCell)
+        let checkDiv = document.createElement('div')
+        checkDiv.className="form-check form-switch"
+        readCell.append(checkDiv)
+        let listCheck = document.createElement('input')
+        listCheck.className='form-check-input'
+        listCheck.role='switch'
+        listCheck.type='checkbox'
+        listCheck.id='readCheck'
 
         if (myLibrary[i].read === true){
+            listCheck.checked=true
+        } else listCheck.checked=false
 
-            readCell.innerHTML="Read"
+        checkDiv.append(listCheck)
 
-        } else readCell.innerHTML = "Not Read"
 
-        newRow.append(readCell)
+        // Create remove button
+        let removeBook = document.createElement("button")
+        removeBook.className='btn btn-outline-danger'
+        removeBook.innerHTML='<i class="far fa-trash-alt"></i>'
+        removeBook.id='removeBook'
+        removeBook.type='button'
+        removeBook.dataset.bookNumber = i
+        removeBook.addEventListener('click', () => {
+            console.log('The book you clicked was index ' + removeBook.dataset.bookNumber + ' in the array')
+            modifyArray(removeBook.dataset.bookNumber)
+        })
+        newRow.append(removeBook)
     }
+}
+
+function modifyArray(index){
+    myLibrary.splice(index,1)
+    loopBooks()
 }
 
 
@@ -121,8 +143,6 @@ function resetForm(){
 
 }
 
-// Submit book
-submitBook.addEventListener('click', () => {
-
-    addToArray();
-})
+onsubmit = (event) => { 
+    addToArray()
+};
