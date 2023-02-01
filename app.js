@@ -46,14 +46,6 @@ function clearTable(){
     tableBody.innerHTML = ""
 }
 
-// removeItem.addEventListener('click', ()=>{
-//     let index = removeItem.dataset.bookName
-//     console.log('The book to be removed is ' + index)
-
-//     // myLibrary = myLibrary.filter(item => item.title !== 'index')
-
-// })
-
 
 function addToArray(){
     event.preventDefault()
